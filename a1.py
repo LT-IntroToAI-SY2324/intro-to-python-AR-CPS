@@ -110,8 +110,10 @@ def median(lst: List[int]) -> float:
     l = len(lst)
     l = l/2
     if isinstance(l, float):
-        l += 0.5
-        return lst[l]
+        l = l - 0.5
+        l = int(l)
+        x = lst[l]
+        return x
     else:
         x = lst[l]+lst[l+1]
         x = x/2
@@ -137,13 +139,20 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     Returns:
         the resulting list after playing duck duck goose
     """
-    l = len(lst)
-    x = 0
-    for el in lst:
-        if x == l :
-            x = 0
-        x+=1
-        lst.pop(2)
+    i = 0
+    current = "duck1"
+    while len(lst) > 2:
+        if current == "duck1" :
+            current = "duck2"
+            i+=1
+        elif current == "duck2":
+            current = "goose"
+            i+=1
+        else:
+            lst = lst[:i] + lst[i + 1:]
+
+        if i >= 2 :
+            i -= len(lst)
     return lst
 
 
