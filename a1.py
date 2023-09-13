@@ -149,6 +149,7 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
             current = "goose"
             i+=1
         else:
+            current = "duck1"
             lst = lst[:i] + lst[i + 1:]
 
         if i >= 2 :
